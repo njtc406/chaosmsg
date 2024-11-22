@@ -1,0 +1,19 @@
+syntax = "proto3";
+package game_id;
+option go_package = ".;msg";
+
+// 消息id(10000 - 9999999)
+enum ID{
+  ID_GAME_None = 0;
+  // system
+  ID_C2S_Ping = 10000;                  // ping
+  ID_S2C_Ping = 10001;                  // pong
+
+  ID_C2S_AnnouncementList = 10010;    // 公告列表
+  ID_S2C_AnnouncementList = 10011;    // 公告列表返回
+
+  ID_C2S_Login = 10100;                 // 登录
+  ID_S2C_Login = 10101;                 // 登录返回
+  ID_C2S_Logout = 10102;                 // 登出
+  ID_S2C_Logout = 10103;                 // 登出返回
+}

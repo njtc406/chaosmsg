@@ -1,0 +1,20 @@
+syntax = "proto3";
+package common_errcode;
+option go_package = "server/msg/comm;commmsg";
+
+enum ErrCode {
+  Ok = 0;
+  ApiNotFound = 1;        // 接口不存在
+  ApiError = 2;           // 接口运行报错
+  ApiRunTimeout = 3;      // 接口运行超时
+  ApiDeveloping = 4;      // 接口正在开发中
+
+  ParamsInvalid = 10;     // 参数错误
+  SdkNotFound = 11;       // sdk不存在
+
+  UserNotFound = 100;     // 用户不存在
+  UserStatusAbnormal = 101;// 用户状态异常
+  TokenCreateFailed = 102;// token创建失败
+  TokenInvalid = 103; // token无效
+  TokenExpired = 104; // token过期
+}

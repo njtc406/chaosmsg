@@ -1,0 +1,13 @@
+syntax = "proto3";
+package internal_msg;
+option go_package = ".;msg";
+
+message Msg_Test {
+
+}
+
+
+
+// ==========================comm struct=======================
+
+// ==========================comm enum=======================

@@ -1,0 +1,80 @@
+syntax = "proto3";
+package login_msg;
+
+import "comm/comm.proto";
+
+option go_package = "server/msg/login;msg";
+
+// Tips: 所有的消息主结构都需要加上//@id: 消息号 消息结构体名称 注释
+
+//@id: 1 C2S_SignIn 登录
+message C2S_SignIn {
+  string UserName = 1;    // 用户名
+  string Password = 2;    // 密码
+  string Token = 3;       // token
+  string Type = 4;        // 校验类型(local guest sdk_name)
+  string Channel = 5;     // 渠道
+  string ChildChannel = 6;// 子渠道
+}
+
+message S2C_SignIn {
+  string Token = 1; // 登录token(用于进入游戏时的验证,返回0时才有这个)
+}
+
+//@id: 2 C2S_DeleteAccount 注销账号
+message C2S_DeleteAccount {
+  string Token = 1;
+}
+
+message S2C_DeleteAccount {
+  int64 DeleteTime = 1; // 删除账号时间
+}
+
+//@id: 10 C2S_ServerList 请求服务器列表
+message C2S_ServerList {
+  string Token = 1;
+}
+
+message S2C_ServerList {
+  repeated ServerInfo List = 1; // 服务器列表
+}
+
+//@id: 11 C2S_AnnouncementList 请求公告列表
+message C2S_AnnouncementList {
+  string Token = 1;
+}
+
+message S2C_AnnouncementList {
+  repeated AnnouncementInfo List = 1; // 公告列表
+}
+
+//@id: 12 C2S_SelectServer 选择服务器
+message C2S_SelectServer {
+  int32 ServerId = 1; // 服务器ID
+  string Token = 2; // 验证返回的那个token
+}
+
+message S2C_SelectServer {
+  string Address = 1; // 服务器地址
+}
+
+// ==========================comm struct=======================
+
+message ServerInfo {
+  int32 Id = 1;                             // 服务器ID
+  string Name = 2;                          // 服务器名称
+  int64 StartTime = 3;                      // 服务器开服时间
+  common_comm.ServerStatus Status = 4;      // 服务器状态
+}
+
+message AnnouncementInfo {
+  string Title = 1;     // 标题
+  string Content = 2;   // 内容
+  string Group = 3;     // 群组
+  int64 ShowTime = 4;   // 显示时间
+  int64 ExpireTime = 5; // 过期时间
+  int32 Sort = 6;       // 排序
+  string Url = 7;       // 链接地址
+}
+
+// ==========================comm enum=======================

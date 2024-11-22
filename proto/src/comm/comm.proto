@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package common_comm;
+
+option go_package = "server/msg/comm;commmsg";
+
+enum ServerStatus {
+  Normal = 0;   // 正常
+  Maintenance = 1; // 维护中
+  Close = 2;    // 关闭
+}

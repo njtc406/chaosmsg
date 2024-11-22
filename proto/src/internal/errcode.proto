@@ -1,0 +1,7 @@
+syntax = "proto3";
+package internal_errcode;
+option go_package = ".;msg";
+
+enum ErrCode {
+  Success = 0;
+}

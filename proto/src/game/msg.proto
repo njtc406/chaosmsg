@@ -1,0 +1,43 @@
+syntax = "proto3";
+package game_msg;
+option go_package = ".;msg";
+
+//@id: 10000
+message C2S_Ping {
+
+}
+
+//@id: 10001
+message S2C_Ping {
+  int64 Time = 1; // 服务器时间戳
+}
+
+//@id: 10010
+message C2S_AnnouncementList {
+  int32 ServerId = 1;
+}
+
+//@id: 10011
+message S2C_AnnouncementList {
+  repeated string Announcement = 1;
+}
+
+message C2S_Login {
+
+}
+
+message S2C_Login {
+ 
+}
+
+message C2S_Logout {
+  
+}
+
+message S2C_Logout {
+
+}
+
+// ==========================comm struct=======================
+
+// ==========================comm enum=======================

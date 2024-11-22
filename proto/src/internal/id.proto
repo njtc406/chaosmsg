@@ -1,0 +1,8 @@
+syntax = "proto3";
+package internal_id;
+option go_package = ".;msg";
+
+// 消息id(>1000000)
+enum ID {
+  ID_None = 0;
+}

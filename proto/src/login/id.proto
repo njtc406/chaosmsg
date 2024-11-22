@@ -1,0 +1,15 @@
+syntax = "proto3";
+package login_id;
+option go_package = "server/msg/login;msg";
+
+// 消息id(1 - 9999)
+enum MsgId {
+  Msg_None = 0;
+  // system
+  C2S_SignIn = 1;            // 登录
+  C2S_DeleteAccount = 2;     // 删除账号(删除账号会有一个反悔期,在反悔期内登录账号即会解除删除)
+
+  C2S_ServerList = 10;           // 请求服务器列表
+  C2S_AnnouncementList = 11;     // 请求公告列表
+  C2S_SelectServer = 12;         // 选择服务器
+}
