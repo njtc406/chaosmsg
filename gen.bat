@@ -53,7 +53,7 @@ for /d %%D in (%src_dir%\*) do (
 				mkdir "%server_outputDir%\%%~nxD"
 			)
 			
-			call %scripts_dir%\protoc.exe -I=%src_dir% --plugin=protoc-gen-go="%scripts_dir%\protoc-gen-go.exe"  --go_out=paths=source_relative:%server_outputDir%  %%D\*.proto
+			call %scripts_dir%\protoc.exe -I=%src_dir% --plugin=protoc-gen-go="%scripts_dir%\protoc-gen-go.exe" --plugin=protoc-gen-go-grpc="%scripts_dir%\protoc-gen-go-grpc.exe"  --go_out=paths=source_relative:%server_outputDir%  %%D\*.proto --go-grpc_out=paths=source_relative:%server_outputDir%  %%D\*.proto
 			if errorlevel 1 (
 				echo [ %%~nxD ]生成服务器pb文件失败
 				pause

@@ -17,8 +17,8 @@ message PID {
 message Message {
   int32 TypeId                        = 1; // 消息类型ID
   string TypeName                     = 2; // 消息类型名称
-  PID Sender                          = 3; // 发送者
-  PID Receiver                        = 4; // 接收者
+  PID SenderPid                       = 3; // 发送者
+  PID ReceiverPid                     = 4; // 接收者
   string Method                       = 5; // 调用方法
   bytes  Request                      = 6; // 方法参数
   bytes  Response                     = 7; // 方法返回值
@@ -28,4 +28,11 @@ message Message {
   uint64 ReqId                        = 11; // 请求ID
   bool NeedResp                       = 12; // 是否需要回复
   int32 CompressType                  = 13; // 压缩类型(0无压缩)
+}
+
+service GrpcListener {
+  rpc RPCCall(Message) returns (RpcCallResponse) ;
+}
+
+message RpcCallResponse{
 }
