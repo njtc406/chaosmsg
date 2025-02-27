@@ -1,0 +1,20 @@
+syntax = "proto3";
+package internal_msg;
+option go_package = ".;msg";
+
+message ClientMsg {
+  string RoleId = 1;
+  int64 SessionId = 2;
+  int32 MsgId = 3;
+  bytes Data = 4;
+}
+
+message ClientMsgResp {
+  int32 MsgId = 1;
+  bytes Data = 2;
+  repeated string RoleIds = 3;
+}
+
+// ==========================comm struct=======================
+
+// ==========================comm enum=======================

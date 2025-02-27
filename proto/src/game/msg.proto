@@ -1,39 +1,53 @@
 syntax = "proto3";
 package game_msg;
 option go_package = ".;msg";
+/*
+所有的消息主结构都需要加上:
+//@id: 消息号 消息结构体名称 注释
+所有的请求消息都需要加:
+//@service: serviceName
+ */
 
-//@id: 10000
+//@id: 10000 C2S_Ping 心跳
+//@service: PlayerMgr
 message C2S_Ping {
 
 }
 
-//@id: 10001
+//@id: 10001 S2C_Ping 心跳回复
 message S2C_Ping {
   int64 Time = 1; // 服务器时间戳
 }
 
-//@id: 10010
+//@id: 10010 C2S_AnnouncementList 请求公告列表
+//@service: GmService
 message C2S_AnnouncementList {
   int32 ServerId = 1;
 }
 
-//@id: 10011
+//@id: 10011 S2C_AnnouncementList 回复公告列表
 message S2C_AnnouncementList {
   repeated string Announcement = 1;
 }
 
+//@id: 11000 C2S_Login 登录
+//@service: PlayerMgr
 message C2S_Login {
-
+  string Token = 1; // 登录token
 }
 
+//@id: 11001 S2C_Login 登录回复
 message S2C_Login {
  
 }
 
+//@id: 11002 C2S_Logout 注销
+//@service: PlayerMgr
 message C2S_Logout {
   
 }
 
+//@id: 11003 S2C_Logout 注销回复
 message S2C_Logout {
 
 }

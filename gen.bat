@@ -10,9 +10,9 @@ set server_outputDir=%outDir%\server
 :: 客户端文件目录
 set client_outputDir=%outDir%\client
 :: 客户端消息文件目录(客户端只会打包这个目录下面的proto文件)
-set client_msg_except_dir_name=internal
+set client_msg_except_dir_name=internal_msg
 @REM 设置一个拷贝目录,将打好的消息自动拷贝到对应的位置
-set copyDir=..\..\server\msg
+set copyDir=..\..\server\internal\msg
 
 :: 源文件目录
 set "src_dir=.\src"
@@ -69,7 +69,7 @@ for /d %%D in (%src_dir%\*) do (
 			rem 根据原始文件生成消息id文件
 			for %%M in (%%D\*.proto) do (
 				if "%%~nxM" == "msg.proto" (
-					call %scripts_dir%\parser.exe %%M %server_outputDir%\%%~nxD\message.go
+					call %scripts_dir%\protoparser.exe %%M %server_outputDir%\%%~nxD\message.go
 					if errorlevel 1 (
 						echo 生成服务器message文件失败
 						pause

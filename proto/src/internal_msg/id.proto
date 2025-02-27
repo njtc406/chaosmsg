@@ -3,6 +3,6 @@ package internal_id;
 option go_package = ".;msg";
 
 // 消息id(>1000000)
-enum ID {
+enum MsgId {
   ID_None = 0;
 }
