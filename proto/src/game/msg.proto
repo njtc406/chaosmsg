@@ -5,11 +5,13 @@ option go_package = ".;msg";
 所有的消息主结构都需要加上:
 //@id: 消息号 消息结构体名称 注释
 所有的请求消息都需要加:
-//@service: serviceName
+//@service: serviceName  // 处理消息的服务
+//@method: methodName    // 处理消息的方法
  */
 
 //@id: 10000 C2S_Ping 心跳
 //@service: PlayerMgr
+//@method: RpcPing
 message C2S_Ping {
 
 }
@@ -21,6 +23,7 @@ message S2C_Ping {
 
 //@id: 10010 C2S_AnnouncementList 请求公告列表
 //@service: GmService
+//@method: RpcAnnouncementList
 message C2S_AnnouncementList {
   int32 ServerId = 1;
 }
@@ -32,6 +35,7 @@ message S2C_AnnouncementList {
 
 //@id: 11000 C2S_Login 登录
 //@service: PlayerMgr
+//@method: RpcLogin
 message C2S_Login {
   string Token = 1; // 登录token
 }
@@ -43,6 +47,7 @@ message S2C_Login {
 
 //@id: 11002 C2S_Logout 注销
 //@service: PlayerMgr
+//@method: RpcLogout
 message C2S_Logout {
   
 }
@@ -52,6 +57,11 @@ message S2C_Logout {
 
 }
 
+message S2C_ErrCode {
+  int32 Type = 1; // 错误类型
+  int32 Code = 2; // 错误码
+  repeated string Params = 3; // 参数
+}
 // ==========================comm struct=======================
 
 // ==========================comm enum=======================

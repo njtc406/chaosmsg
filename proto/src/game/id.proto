@@ -13,6 +13,8 @@ enum MsgId{
   C2S_AnnouncementList = 10010;    // 公告列表
   S2C_AnnouncementList = 10011;    // 公告列表返回
 
+  S2C_ErrCode = 10020;            // 错误码
+
   C2S_Login = 11000;                 // 登录
   S2C_Login = 11001;                 // 登录返回
   C2S_Logout = 11002;                 // 登出
