@@ -3,7 +3,7 @@ package login_msg;
 
 import "comm/comm.proto";
 
-option go_package = "server/msg/login;msg";
+option go_package = "server/internal/msg/login;msg";
 
 // Tips: 所有的消息主结构都需要加上//@id: 消息号 消息结构体名称 注释
 

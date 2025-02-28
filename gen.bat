@@ -81,8 +81,8 @@ for /d %%D in (%src_dir%\*) do (
 			)
 			
 
-			if not "%%~nxD" == "%client_msg_except_dir_name%" (
- 				if not exist "%client_outputDir%\%%~nxD" mkdir "%client_outputDir%\%%~nxD"
+@REM 			if not "%%~nxD" == "%client_msg_except_dir_name%" (
+@REM  				if not exist "%client_outputDir%\%%~nxD" mkdir "%client_outputDir%\%%~nxD"
 @REM 				for %%F in (%%D\*.proto) do @(
 @REM 					echo 开始编译 %%~nxF
 @REM 					call %lib_bin_dir%\pbjs.cmd "%%F" --ts %client_outputDir%\%%~nxD\%%~nxF.ts
@@ -94,15 +94,24 @@ for /d %%D in (%src_dir%\*) do (
 @REM 						echo SUCCESS: 编译 [ %%~nxF ] 完成!
 @REM 					)
 @REM 				)
-				call robocopy %%D "%client_outputDir%\%%~nxD"  /E /NFL /NDL /NJH /NJS
-			)
+@REM 				call robocopy %%D "%client_outputDir%\%%~nxD"  /E /NFL /NDL /NJH /NJS
+@REM 			)
 		)
     )
 )
+echo 开始拷贝到客户端输出目录...
+call robocopy %src_dir% "%client_outputDir%"  /E /NFL /NDL /NJH /NJS /XD "actor" "internal_msg"
+echo 拷贝完成
+
+echo.
 
 if exist "%copyDir%" (
-	call robocopy "%server_outputDir%" "%copyDir%" /E /NFL /NDL /NJH /NJS
+    echo 开始拷贝服务器输出到运行目录...
+    call robocopy "%server_outputDir%" "%copyDir%" /E /NFL /NDL /NJH /NJS /XD "actor"
+    echo 拷贝完成
 )
+
+
 
 echo.
 echo =================proto消息打包完成=====================

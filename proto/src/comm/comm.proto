@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package common_comm;
 
-option go_package = "server/msg/comm;commmsg";
+option go_package = "server/internal/msg/comm;commmsg";
 
 enum ServerStatus {
   Normal = 0;   // 正常

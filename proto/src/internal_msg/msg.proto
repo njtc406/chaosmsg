@@ -15,6 +15,12 @@ message ClientMsgResp {
   repeated string RoleIds = 3;
 }
 
+message ClientMsgRespBySessionIds {
+  int32 MsgId = 1;
+  bytes Data = 2;
+  repeated int64 SessionIds = 3;
+}
+
 // ==========================comm struct=======================
 
 // ==========================comm enum=======================
