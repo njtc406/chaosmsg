@@ -11,7 +11,7 @@ option go_package = ".;msg";
 
 //@id: 10000 C2S_Ping 心跳
 //@service: PlayerMgr
-//@method: RpcPing
+//@method: RpcProcessSystem
 message C2S_Ping {
 
 }
@@ -35,7 +35,7 @@ message S2C_AnnouncementList {
 
 //@id: 11000 C2S_Login 登录
 //@service: PlayerMgr
-//@method: RpcLogin
+//@method: RpcProcessSystem
 message C2S_Login {
   string Token = 1; // 登录token
 }
@@ -47,7 +47,7 @@ message S2C_Login {
 
 //@id: 11002 C2S_Logout 注销
 //@service: PlayerMgr
-//@method: RpcLogout
+//@method: RpcProcessSystem
 message C2S_Logout {
   
 }
@@ -55,6 +55,10 @@ message C2S_Logout {
 //@id: 11003 S2C_Logout 注销回复
 message S2C_Logout {
 
+}
+
+message C2S_ReLogin {
+  string Token = 1; // 登录token
 }
 
 message S2C_ErrCode {

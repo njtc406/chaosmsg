@@ -21,6 +21,16 @@ message ClientMsgRespBySessionIds {
   repeated int64 SessionIds = 3;
 }
 
+message RoleBindingReq {
+  string RoleId = 1;
+  int64 SessionId = 2;
+}
+
+message RoleKickOutReq {
+  string RoleId = 1;
+  int64 SessionId = 2;
+}
+
 // ==========================comm struct=======================
 
 // ==========================comm enum=======================
