@@ -1,6 +1,6 @@
 syntax = "proto3";
 package actor;
-option go_package = ".;msg";
+option go_package = ".;actor";
 
 message PID {
   string Address = 1;         // 服务地址
@@ -12,6 +12,7 @@ message PID {
   int64 Version = 7;          // 服务版本号
   string RpcType = 8;         // rpc类型(默认使用rpcx)
   string NodeUid = 9;         // 节点唯一标识(这个主要是用来区分本地服务用的)
+  bool IsMaster = 10;         // 是否是主服务(主从)
 }
 
 message Message {
@@ -35,4 +36,16 @@ service GrpcListener {
 }
 
 message RpcCallResponse{
+}
+
+message Event {
+  int32 EventType = 1; // 事件类型
+  EventData Data = 2; // 事件数据
+  int32 ServerId = 3; // 服务器ID
+  string TraceId = 4; // 链路追踪ID
+}
+
+message EventData {
+  map<string, string> Header = 1;
+  bytes RawData = 2;
 }
