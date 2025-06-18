@@ -105,11 +105,11 @@ echo 拷贝完成
 
 echo.
 
-if exist "%copyDir%" (
-    echo 开始拷贝服务器输出到运行目录...
-    call robocopy "%server_outputDir%" "%copyDir%" /E /NFL /NDL /NJH /NJS /XD "actor"
-    echo 拷贝完成
-)
+@REM if exist "%copyDir%" (
+@REM     echo 开始拷贝服务器输出到运行目录...
+@REM     call robocopy "%server_outputDir%" "%copyDir%" /E /NFL /NDL /NJH /NJS /XD "actor"
+@REM     echo 拷贝完成
+@REM )
 
 
 
